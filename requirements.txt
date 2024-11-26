@@ -11,3 +11,4 @@ pip
 python-dotenv
 scikit-learn
 plotly
+seaborn
