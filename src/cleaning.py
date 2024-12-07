@@ -47,7 +47,7 @@ def imm_obj_to_int(df: pd.DataFrame) -> pd.DataFrame:
     """
     df.replace(',', '', regex=True, inplace=True)
     obj_cols = df.select_dtypes(include='object').columns.to_list()
-    df[obj_cols] = df[obj_cols].astype('int')
+    df[obj_cols] = df[obj_cols].astype('int') # Convert column data types
     return df
 
 
@@ -61,9 +61,9 @@ def pres_rows_cols_filter(df_presidents: pd.DataFrame) -> pd.DataFrame:
     Returns:
         df_presidents (pd.DataFrame): dataframe after filters are applied
     """
-    df_presidents = df_presidents[df_presidents['position_title'] == 'PRESIDENT OF THE UNITED STATES']
-    df_presidents = df_presidents[df_presidents['year'] >= 1980]
-    df_presidents = df_presidents.loc[:, :'term']
+    df_presidents = df_presidents[df_presidents['position_title'] == 'PRESIDENT OF THE UNITED STATES'] # Original contains vice president data, which is unnecessary
+    df_presidents = df_presidents[df_presidents['year'] >= 1980] # Only years 1980-2021 are needed
+    df_presidents = df_presidents.loc[:, :'term'] # Removes salary and position title data
     return df_presidents
 
 
